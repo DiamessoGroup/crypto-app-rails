@@ -1,0 +1,23 @@
+<h3>Lookup Crypto</h3>
+<%= form_with url: lookup_path, method: :post do |form| %>
+<%= form.text_field :query, placeholder: "Enter Crypto symbol", size: 50 %>
+<%= form.submit "Lookup Crypto" %>
+<% end %>
+<br>
+
+<%= @symbol %>
+
+<% if @lookup_coin %>
+<% @lookup_coin["data"].each do |coin| %>
+<% if coin["symbol"] == @symbol%>
+<%= coin["name"] %><br>
+<%= coin["symbol"] %><br>
+<%= coin["cmc_rank"] %><br>
+<%= coin["quote"]["USD"]["price"] %><br><br>
+
+<% end %>
+
+
+<% end %>
+
+<% end %>
