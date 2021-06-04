@@ -1,7 +1,7 @@
 <h3>Lookup Crypto</h3>
-<%= form_with url: lookup_path, method: :post do |form| %>
-<%= form.text_field :query, placeholder: "Enter Crypto symbol", size: 50 %>
-<%= form.submit "Lookup Crypto" %>
+<%= form_with url: lookup_path, method: :post, class: "mb-3" do |form| %>
+<%= form.text_field :query, placeholder: "Enter Crypto symbol", size: 50, class: "form-control"  %><br>
+<%= form.submit "Lookup Crypto", class: "btn btn-primary" %>
 <% end %>
 <br>
 
