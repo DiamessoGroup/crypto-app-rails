@@ -24,7 +24,14 @@
                     <%= link_to "Lookup Crypto", lookup_path, class: "nav-link" %>
                 </li>
 
+
                 <% if user_signed_in? %>
+                <li class="nav-item">
+                    <%= link_to "List Cryptos", crypto_stocks_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Add New Crypto", new_crypto_stock_path, class: "nav-link" %>
+                </li>
                 <li class="nav-item">
                     <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
                 </li>

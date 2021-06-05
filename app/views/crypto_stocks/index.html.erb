@@ -1,0 +1,41 @@
+<h1>Crypto Stocks</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Current Price</th>
+      <th>Current Value</th>
+      <th>Total Paid</th>
+      <th>Profit/Loss</th>
+      <th>Symbol</th>
+      <th>Cost per</th>
+      <th>Amount owned</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @crypto_stocks.each do |crypto_stock| %>
+    <% if crypto_stock.user_id == current_user.id %>
+    <tr>
+      <% @lookup_crypto["data"].each do |coin| %>
+      <% if coin["symbol"] == crypto_stock["symbol"].upcase %>
+      <td><%= link_to coin["name"], crypto_stock_path(crypto_stock) %></td>
+      <td><%= number_to_currency(coin["quote"]["USD"]["price"], precision: 2) %></td>
+      <td><%= number_to_currency((coin["quote"]["USD"]["price"] *  crypto_stock.amount_owned), precision: 2) %></td>
+      <td>
+        <%= number_to_currency((crypto_stock.cost_per *  crypto_stock.amount_owned))%>
+      </td>
+      <td>
+        <%= number_to_currency((coin["quote"]["USD"]["price"] *  crypto_stock.amount_owned) - (crypto_stock.cost_per *  crypto_stock.amount_owned))%>
+      </td>
+      <% end %>
+      <% end %>
+      <td><%= crypto_stock.symbol.upcase %></td>
+      <td><%= crypto_stock.cost_per %></td>
+      <td><%= crypto_stock.amount_owned %></td>
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to "New Crypto Stock", new_crypto_stock_path %>

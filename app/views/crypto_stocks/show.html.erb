@@ -1,0 +1,23 @@
+<p>
+  <strong>Symbol:</strong>
+  <%= @crypto_stock.symbol %>
+</p>
+
+<p>
+  <strong>Cost per:</strong>
+  <%= @crypto_stock.cost_per %>
+</p>
+
+<p>
+  <strong>Amount owned:</strong>
+  <%= @crypto_stock.amount_owned %>
+</p>
+
+<p>
+  <strong>Bought By:</strong>
+  <%= @crypto_stock.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_crypto_stock_path(@crypto_stock) %> |
+<%= link_to "Delete Crypto", crypto_stock_path(@crypto_stock), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to 'Back', crypto_stocks_path %> |

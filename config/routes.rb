@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :crypto_stocks
   devise_for :users
   root 'home#index'
 
