@@ -6,7 +6,6 @@ class CryptoStocksController < ApplicationController
 
   # GET /crypto_stocks or /crypto_stocks.json
   def index
-    console
     @url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=200&convert=USD&CMC_PRO_API_KEY=#{ENV['crypto_api']}"
     @uri = URI(@url)
     @response = Net::HTTP.get(@uri)
